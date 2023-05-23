@@ -1,0 +1,70 @@
+version: '3.0'
+services:
+  mysql:
+    image: mysql
+    restart: always
+    mem_limit: 1g
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+      - ./src/Database:/docker-entrypoint-initdb.d/your.sql
+    networks:
+      - appNetwork
+
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    mem_limit: 128m
+    depends_on:
+      mysql:
+        condition: service_started
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    ports:
+      - 8080:80
+    networks:
+      - appNetwork
+
+
+  php:
+    image: myphp
+    mem_limit: 256m
+    depends_on:
+      mysql:
+        condition: service_started
+      phpmyadmin:
+        condition: service_started
+    restart: always
+    ports:
+      - 80:8080
+    volumes:
+      - ./src/DB_Project:/var/www/html
+    networks:
+      - appNetwork
+
+  vscode:
+    image: codercom/code-server:latest
+    mem_limit: 512m
+    ports:
+      - 8084:8080
+    volumes:
+      - ./src/DB_Project:/home/coder/project
+      - ./.config:/home/coder/.config
+    environment:
+      - PUID=1000
+      - PGID=1000
+    networks:
+      - appNetwork
+
+volumes:
+  db:
+
+networks:
+  appNetwork:
+    driver: bridge

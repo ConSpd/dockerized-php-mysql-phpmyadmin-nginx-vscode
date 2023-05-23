@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AFM & Date </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div><h2>Choose AFM & Date</h2></div>
+        <form action="NumOfContracts.php" method="POST">
+            <div>
+                <label for="afm">ΑΦΜ</label>
+                <input type="number" name="afm" id="afm" min="111111111" max="999999999">
+                <font color="grey"><small><i>Try 154534687</i></small></font>
+            </div><br>
+            <div>
+                <label for="date">Ημερομηνία</label>
+                <input type="date" name="date" id="date">
+                <font color="grey"><small><i>Try 08/08/2020</i></small></font>
+            </div>
+            <div><br>
+                <input type="submit" name="Αναζήτηση" value="Αναζήτηση">
+            </div>
+        </form>
+    </body>
+</html>
