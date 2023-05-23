@@ -16,7 +16,18 @@
 Όπως είπαμε και στο θέμα τα παραπάνω 4 _(εκτός του nginx που είναι ενσωματωμένο στο php)_ είναι σε containerized μορφή όπου όσον αφορά το php δημιουργούμε εμείς ένα Image με `DockerFile`.
 
 == *Setup*
+====
+Για να τρέξει η εφαρμογή εκτελούμε
+[source, bash]
+----
+git clone https://github.com/ConSpd/dockerized-php-mysql-phpmyadmin-nginx-vscode.git
+cd dockerized-php-mysql-phpmyadmin-nginx-vscode
+./INSTALL.sh
+----
+====
 
+=== Προαπαιτούμενα
+Απαιτείται η ύπαρξη Docker και Docker Compose στον υπολογιστή που θα τρέξει
 
 == *Με χρήση `Run`*
 Εφόσων θέλουμε Web App το οποίο θα επικοινωνεί με βάση δεδομένων θα χρειαστούμε ένα κοινό δίκτυο το οποίο θα το δημιουργήσουμε με την εντολή:
@@ -56,7 +67,7 @@ docker run -d \
 Πρώτα θα συνδεδούμε στον container 
 [source, sql]
 ----
-docker exec -it project-mysql-1 bash
+docker exec -it mysql-service bash
 ----
 
 Έπειτα θα συνδεθούμε στην βάση και θα δημιουργήσουμε την βάση general_insurance και έπειτα θα την γεμίσουμε με τα περιεχόμενα της ήδη υπάρχουσας που προσθέσαμε στον container από τον host.

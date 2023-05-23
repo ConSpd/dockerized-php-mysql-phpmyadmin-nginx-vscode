@@ -19,7 +19,7 @@ while true; do
         sleep 1
 done
 
-c1="mysql -u root -ppassword -e 'create database general_insurance;'"
-c2="mysql -u root -ppassword general_insurance < /docker-entrypoint-initdb.d/your.sql/general_insurance.sql"
-
-docker exec -it mysql-service sh -c "$c1;$c2" 
+sleep 5
+docker exec -it mysql-service sh -c "mysql -u root -ppassword -e 'GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'; FLUSH PRIVILEGES;'"
+docker exec -it mysql-service sh -c "mysql -u root -ppassword -e 'create database general_insurance;'"
+docker exec -it mysql-service sh -c "mysql -u root -ppassword general_insurance < /docker-entrypoint-initdb.d/your.sql/general_insurance.sql" 
