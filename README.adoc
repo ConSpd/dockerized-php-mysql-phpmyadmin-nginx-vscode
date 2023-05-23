@@ -268,12 +268,12 @@ docker compose -f docker-compose.yaml up -d
 Και βλέπουμε ότι και τα 3 services τρέχουν κανονικά 
 
 .Compose Running Services
-image::.Running App/compose1.png[Compose1,700]
+image::Images/compose1.png[Compose1,700]
 
 Πηγαίνουμε στο localhost:80 και βλέπουμε ότι η σελίδα έχει ξεκινήσει. 
 
 .Running App
-image::.Running App/compose2.png[Compose1,300]
+image::Images/compose2.png[Compose1,300]
 
 Για να το κλείσουμε τρέχουμε
 
