@@ -24,6 +24,15 @@ git clone https://github.com/ConSpd/dockerized-php-mysql-phpmyadmin-nginx-vscode
 cd dockerized-php-mysql-phpmyadmin-nginx-vscode
 ./INSTALL.sh
 ----
+
+Αν δεν δημιουργηθεί η βάση τότε εκτελούμε τις εντολές
+[source, bash]
+----
+docker exec -it mysql-service 
+mysql -u root -ppassword -e 'GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'; FLUSH PRIVILEGES;
+mysql -u root -ppassword -e 'create database general_insurance;'
+mysql -u root -ppassword general_insurance < /docker-entrypoint-initdb.d/your.sql/general_insurance.sql
+----
 ====
 
 === Προαπαιτούμενα
