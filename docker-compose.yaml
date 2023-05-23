@@ -3,6 +3,7 @@ services:
   mysql:
     image: mysql
     restart: always
+    container_name: mysql-service
     mem_limit: 1g
     environment:
       - MYSQL_ROOT_PASSWORD=password
